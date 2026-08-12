@@ -1,0 +1,36 @@
+package me.char321.sfadvancements.core;
+
+import com.github.drakescraft_labs.slimefun4.api.items.groups.FlexItemGroup;
+import com.github.drakescraft_labs.slimefun4.api.player.PlayerProfile;
+import com.github.drakescraft_labs.slimefun4.core.guide.SlimefunGuideMode;
+import com.github.drakescraft_labs.slimefun4.libraries.dough.items.CustomItemStack;
+import me.char321.sfadvancements.SFAdvancements;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
+
+public class AdvancementsItemGroup extends FlexItemGroup {
+
+    public static void init(SFAdvancements plugin) {
+        if (SFAdvancements.getMainConfig().getConfiguration().getBoolean("add-advancements-to-guide")) {
+            new AdvancementsItemGroup().register(plugin);
+        }
+    }
+
+    public AdvancementsItemGroup() {
+        super(
+                new NamespacedKey(SFAdvancements.instance(), "advancements"),
+                new CustomItemStack(Material.FILLED_MAP, "&9Progresos"),
+                -1);
+    }
+
+    @Override
+    public boolean isVisible(Player p, PlayerProfile profile, SlimefunGuideMode layout) {
+        return true;
+    }
+
+    @Override
+    public void open(Player p, PlayerProfile profile, SlimefunGuideMode layout) {
+        SFAdvancements.getGuiManager().displayGUI(p);
+    }
+}
