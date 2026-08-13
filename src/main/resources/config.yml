@@ -1,17 +1,17 @@
-# 启用自动更新
-auto-update: true
+# Las actualizaciones las administra DrakesCraft mediante CI.
+auto-update: false
 
-# 将自定义进度添加到原版进度菜单中 (实验性功能)
+# Añade los avances personalizados al menú de avances de Minecraft (experimental).
 use-advancements-api: true
 
-# 在聊天栏中展示进度达成消息
+# Anuncia en el chat los avances completados.
 announce-advancements: true
 
-# 是否将粘液科技进度的按钮添加到粘液科技的指南中
+# Añade un acceso a los avances dentro de la guía de Slimefun.
 add-advancements-to-guide: true
 
-# 是否输出调试日志
+# Activa mensajes de diagnóstico en consola.
 debug: false
 
-# 在移除进度后是否执行 Bukkit.reloadData (可能造成卡顿)
+# Recarga los datos de Bukkit al eliminar un avance; puede provocar una pausa breve.
 reload-data-on-adv-remove: true
