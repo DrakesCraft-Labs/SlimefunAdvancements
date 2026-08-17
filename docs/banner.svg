@@ -26,12 +26,8 @@
       0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 15px #EAB308b3); }
       50%      { opacity: 1;    filter: drop-shadow(0 0 30px #A78BFA); }
     }
-    @keyframes giro {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
     .fondo  { fill: url(#bgG); }
-    .titulo { font-family: 'Outfit', 'Segoe UI', sans-serif; font-weight: 900; font-size: 31px;
+    .titulo { font-family: 'Outfit', 'Segoe UI', sans-serif; font-weight: 900; font-size: 34px;
                fill: url(#acG); animation: latido 3.5s infinite ease-in-out; }
     .sub    { font-family: 'Inter', 'Segoe UI', sans-serif; font-weight: 700; font-size: 14px;
                fill: #94A3B8; letter-spacing: 3px; }
@@ -42,14 +38,11 @@
   <rect class="fondo" width="920" height="300" rx="14" stroke="#EAB308" stroke-width="1.5" />
 
   <g transform="translate(460, 95)" filter="url(#glowF)">
-    <!-- El giro va en SMIL y no en CSS a proposito: GitHub sirve el banner dentro de un <img>,
-         y ahi `transform-box: fill-box` no se aplica igual en todos los navegadores, con lo que
-         la figura giraba alrededor de la esquina del SVG en vez de sobre si misma. -->
     <g>
       <animateTransform attributeName="transform" type="rotate"
                         from="0 0 0" to="360 0 0" dur="24s" repeatCount="indefinite"/>
-    <rect x="-30" y="-30" width="60" height="60" rx="6" transform="rotate(45)" fill="#0F172A" stroke="url(#acG)" stroke-width="3.5"/>
-    <path d="M -16 0 L -5 12 L 18 -12" fill="none" stroke="#EAB308" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="-30" y="-30" width="60" height="60" rx="6" transform="rotate(45)" fill="#0F172A" stroke="url(#acG)" stroke-width="3.5"/>
+      <path d="M -16 0 L -5 12 L 18 -12" fill="none" stroke="#EAB308" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
   </g>
 

@@ -13,7 +13,7 @@ public class GuiCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Este comando solo lo puede usar un jugador");
+            sender.sendMessage("Sólo los jugadores pueden ejecutar este comando.");
             return false;
         }
         SFAdvancements.getGuiManager().displayGUI((Player) sender);

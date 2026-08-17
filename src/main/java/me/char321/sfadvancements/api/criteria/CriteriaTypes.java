@@ -46,7 +46,7 @@ public class CriteriaTypes {
     public static Criterion loadFromConfig(String id, ConfigurationSection config) {
         String type = config.getString("type");
         if (type == null) {
-            SFAdvancements.warn("Tienes que indicar en advancements.yml para " + id + " indica el tipo");
+            SFAdvancements.warn("debes estar ahíadvancements.ymlpara " + id + " Especificar tipo");
             return null;
         }
 

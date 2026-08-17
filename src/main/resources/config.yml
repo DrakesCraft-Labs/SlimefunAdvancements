@@ -1,17 +1,17 @@
-# Las actualizaciones las administra DrakesCraft mediante CI.
-auto-update: false
+# Habilitar actualizaciones automáticas
+auto-update: true
 
-# Añade los avances personalizados al menú de avances de Minecraft (experimental).
+# Se agregó progresión personalizada al menú de progresión básico. (Funciones experimentales)
 use-advancements-api: true
 
-# Anuncia en el chat los avances completados.
+# Mostrar mensaje de progreso en la barra de chat
 announce-advancements: true
 
-# Añade un acceso a los avances dentro de la guía de Slimefun.
+# Si se debe agregar un botón de progreso de tecnología de limo a la guía de tecnología de limo
 add-advancements-to-guide: true
 
-# Activa mensajes de diagnóstico en consola.
+# Ya sea para generar registros de depuración
 debug: false
 
-# Recarga los datos de Bukkit al eliminar un avance; puede provocar una pausa breve.
+# Ya sea para ejecutar después de eliminar el progreso Bukkit.reloadData (Puede causar retraso)
 reload-data-on-adv-remove: true

@@ -2,13 +2,13 @@ portable_workbench:
   group: basic
   display:
     type: CRAFTING_TABLE
-    name: "&aCrafteo portátil"
+    name: "&aSíntesis portátil"
     lore:
-      - "Usa una mesa de crafteo portátil."
-  name: "&a[Crafteo portátil]"
+      - "Utilice una mesa de trabajo portátil una vez"
+  name: "&a[Síntesis portátil]"
   criteria:
     interact:
-      name: "Usa una mesa de crafteo portátil"
+      name: "Utilice una mesa de trabajo portátil una vez"
       type: interact
       amount: 1
       item:
@@ -21,13 +21,13 @@ dust:
   group: basic
   display:
     type: GUNPOWDER
-    name: "&aHecho polvo"
+    name: "&aconvertirse en polvo"
     lore:
-      - "Usa una trituradora de minerales."
-  name: "&a[Hecho polvo]"
+      - "Utilice una trituradora de mineral una vez"
+  name: "&a[convertirse en polvo]"
   criteria:
     inventory:
-      name: "Usa una trituradora de minerales"
+      name: "Utilice una trituradora de mineral una vez"
       type: multiblock
       multiblock: ORE_CRUSHER
 
@@ -35,13 +35,13 @@ electricity:
   group: electric
   display:
     type: ENERGY_REGULATOR
-    name: "&a¡Electricidad!"
+    name: "&aelectricidad!!!"
     lore:
-      - "Coloca un regulador de energía."
-  name: "&a[¡Electricidad!]"
+      - "Colocar un regulador de energía."
+  name: "&a[electricidad!!!]"
   criteria:
     build:
-      name: "Coloca un regulador de energía"
+      name: "Colocar un regulador de energía."
       type: place
       amount: 1
       item:
@@ -53,11 +53,11 @@ gapple_juice:
     type: GOLDEN_APPLE_JUICE
     name: "&aSabe a vino añejo"
     lore:
-      - "Bebe cinco jugos de manzana dorada."
+      - "Bebe jugo de manzana dorada."
   name: "&a[Sabe a vino añejo]"
   criteria:
     consume:
-      name: "Bebe jugo de manzana dorada"
+      name: "Bebe jugo de manzana dorada."
       type: consume
       amount: 5
       item:
@@ -67,11 +67,11 @@ industrial_revolution:
   group: electric
   display:
     type: FURNACE
-    name: "&aRevolución industrial"
+    name: "&arevolución industrial"
     lore:
-      - "Consigue las cuatro máquinas eléctricas básicas:"
-      - "Trituradora, batea, lavadora y fábrica de lingotes."
-  name: "&a[Revolución industrial]"
+      - "Consigue los siguientes artículos:"
+      - "Trituradora electrica, maquina de mineria de oro electrica, lavadora electrica, Máquina de colada de lingotes eléctrica"
+  name: "&a[revolución industrial]"
   criteria:
     oregrinder:
       name: "Consigue una trituradora eléctrica"
@@ -79,7 +79,7 @@ industrial_revolution:
       item:
         type: ELECTRIC_ORE_GRINDER
     goldpan:
-      name: "Consigue una batea de oro eléctrica"
+      name: "Obtenga una máquina minera de oro eléctrica"
       type: inventory
       item:
         type: ELECTRIC_GOLD_PAN
@@ -89,7 +89,7 @@ industrial_revolution:
       item:
         type: ELECTRIC_DUST_WASHER
     ingotfactory:
-      name: "Consigue una fábrica de lingotes eléctrica"
+      name: "Consigue una máquina de colada de lingotes eléctrica"
       type: inventory
       item:
         type: ELECTRIC_INGOT_FACTORY
@@ -98,10 +98,10 @@ exploding_tools:
   group: other
   display:
     type: EXPLOSIVE_PICKAXE
-    name: "&aHerramientas explosivas"
+    name: "&aherramientas explosivas"
     lore:
       - "Consigue el pico explosivo y la pala explosiva"
-  name: "&a[Herramientas explosivas]"
+  name: "&a[Exploding Tools]"
   criteria:
     pickaxe:
       name: "Consigue un pico explosivo"
@@ -118,13 +118,13 @@ fake_diamond:
   group: basic
   display:
     type: SYNTHETIC_DIAMOND
-    name: "&aDiamante sintético"
+    name: "&adiamante artificial"
     lore:
-      - "Consigue un diamante sintético."
-  name: "&a[Diamante sintético]"
+      - "Consigue un diamante de imitación"
+  name: "&a[diamante artificial]"
   criteria:
     diamond:
-      name: "Consigue un diamante sintético"
+      name: "Consigue un diamante de imitación"
       type: inventory
       item:
         type: SYNTHETIC_DIAMOND
@@ -133,10 +133,10 @@ carbonado:
   group: basic
   display:
     type: CARBONADO
-    name: "&aCarbonado brillante"
+    name: "&adiamante negro brillante"
     lore:
       - "Consigue un diamante negro"
-  name: "&a[Carbonado brillante]"
+  name: "&a[diamante negro brillante]"
   criteria:
     carbonado:
       name: "Consigue un diamante negro"
@@ -147,13 +147,13 @@ black_gold:
   group: basic
   display:
     type: BUCKET_OF_OIL
-    name: "&aOro negro"
+    name: "&aoro negro"
     lore:
-      - "Consigue un barril de petróleo crudo."
-  name: "&a[Oro negro]"
+      - "Obtener barriles de petróleo crudo"
+  name: "&a[oro negro]"
   criteria:
     oil:
-      name: "Consigue petróleo crudo"
+      name: "Obtener barriles de petróleo crudo"
       type: inventory
       item: BUCKET_OF_OIL
 
@@ -161,10 +161,10 @@ ender_charms:
   group: magical
   display:
     type: ENDER_PEARL
-    name: "&aAmuletos del End"
+    name: "&aEl encanto del final"
     lore:
       - "Investiga el amuleto de Ender"
-  name: "&a[Amuletos del End]"
+  name: "&a[El encanto del final]"
   criteria:
     research:
       name: "Investiga el amuleto de Ender"
@@ -175,13 +175,13 @@ who_asked:
   group: other
   display:
     type: MAP
-    name: "&a¿Quién preguntó?"
+    name: "&aquien hizo la pregunta?"
     lore:
-      - "Busca 'who asked' en la guía."
-  name: "&a[¿Quién preguntó?]"
+      - "buscar who asked"
+  name: "&a[quien hizo la pregunta?]"
   criteria:
     ask:
-      name: "Busca 'who asked'"
+      name: "buscar who asked"
       type: search
       search: "who asked"
   hidden: true

@@ -37,7 +37,7 @@ public class OpenGUI {
     }
 
     public OpenGUI(UUID playerUUID) {
-        this.inventory = Bukkit.createInventory(null, 54, ChatColor.BLUE + "progreso");
+        this.inventory = Bukkit.createInventory(null, 54, ChatColor.BLUE + "cronograma");
         this.playerUUID = playerUUID;
         refresh();
     }
@@ -94,7 +94,7 @@ public class OpenGUI {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) head.getItemMeta();
         meta.setOwningPlayer(Bukkit.getOfflinePlayer(playerUUID));
-        meta.setDisplayName(ChatColor.YELLOW + "Estadísticas");
+        meta.setDisplayName(ChatColor.YELLOW + "estadística");
         StringBuilder completedadvancements = new StringBuilder();
         completedadvancements.append(ChatColor.GRAY).append("Progreso completado: ");
         int completed = SFAdvancements.getAdvManager().getProgress(playerUUID).getCompletedAdvancements().size();
@@ -118,9 +118,9 @@ public class OpenGUI {
 
         ItemStack leftArrow;
         if (page == 1) {
-            leftArrow = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&7Página anterior", pageLore);
+            leftArrow = new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "&7Pagina anterior", pageLore);
         } else {
-            leftArrow = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&ePágina anterior", pageLore);
+            leftArrow = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&ePagina anterior", pageLore);
         }
         inventory.setItem(1, leftArrow);
 
@@ -160,7 +160,7 @@ public class OpenGUI {
         if (scroll == 0) {
             scrollUp = MenuItems.YELLOW;
         } else {
-            scrollUp = new CustomItemStack(Material.ARROW, "&eSubir");
+            scrollUp = new CustomItemStack(Material.ARROW, "&edeslizarse hacia arriba");
         }
         inventory.setItem(17, scrollUp);
 
@@ -170,7 +170,7 @@ public class OpenGUI {
         if (scroll >= maxScroll) {
             scrollDown = MenuItems.YELLOW;
         } else {
-            scrollDown = new CustomItemStack(Material.ARROW, "&eBajar");
+            scrollDown = new CustomItemStack(Material.ARROW, "&erechazar");
         }
         inventory.setItem(53, scrollDown);
     }

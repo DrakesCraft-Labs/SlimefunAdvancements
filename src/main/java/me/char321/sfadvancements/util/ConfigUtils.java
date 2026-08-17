@@ -30,7 +30,7 @@ public class ConfigUtils {
                 try {
                     return getTemplate(itemName).clone();
                 } catch (IllegalArgumentException x) {
-                    SFAdvancements.warn("Tipo de objeto no válido " + itemName);
+                    SFAdvancements.warn("Tipo de elemento no válido " + itemName);
                 }
             }
             return null;
@@ -41,7 +41,7 @@ public class ConfigUtils {
         try {
             item = getTemplate(type).clone();
         } catch (IllegalArgumentException x) {
-            SFAdvancements.warn("Tipo de objeto no válido " + type);
+            SFAdvancements.warn("Tipo de elemento no válido " + type);
             return null;
         }
 

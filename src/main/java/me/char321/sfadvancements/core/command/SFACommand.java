@@ -32,15 +32,15 @@ public class SFACommand implements CommandExecutor {
                     if (sender.hasPermission("sfa.command."+subcmd.getCommandName())) {
                         return subcmd.onExecute(sender, command, label, args);
                     } else {
-                        sender.sendMessage("No tienes permiso.");
+                        sender.sendMessage("no tienes permiso。");
                         return false;
                     }
                 }
             }
-            sender.sendMessage("Comando desconocido. Los que hay son:" + subcommands.stream().map(SubCommand::getCommandName).collect(Collectors.joining(", ")));
+            sender.sendMessage("comando desconocido! Instrucciones disponibles：" + subcommands.stream().map(SubCommand::getCommandName).collect(Collectors.joining(", ")));
             return false;
         }
-        sender.sendMessage("SlimefunAdvancements versión " + SFAdvancements.instance().getDescription().getVersion());
+        sender.sendMessage("SlimefunAdvancements versión de progreso de limo " + SFAdvancements.instance().getDescription().getVersion());
         return true;
     }
 

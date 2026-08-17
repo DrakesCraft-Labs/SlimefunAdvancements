@@ -26,35 +26,35 @@ public class ImportCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ChatColor.RED + "Uso: /" + label + " import <nombre del plugin>");
+            sender.sendMessage(ChatColor.RED + "uso： /" + label + " import <Nombre del complemento>");
             return false;
         }
 
         Plugin pl = Bukkit.getPluginManager().getPlugin(args[1]);
         if (pl == null) {
-            sender.sendMessage(ChatColor.RED + "El plugin " + args[1] + " no se encontró.");
+            sender.sendMessage(ChatColor.RED + "complemento " + args[1] + " extraviado。");
             return false;
         }
 
-        sender.sendMessage("Importando el plugin " + pl.getName() + " los ajustes de progreso...");
+        sender.sendMessage("Importación de complemento " + pl.getName() + " Configuración de progreso en...");
 
         InputStream advInputStream = pl.getResource("sfadvancements.yml");
         if (advInputStream == null) {
-            sender.sendMessage(ChatColor.RED + "El plugin " + pl.getName() + " no trae en su jar el fichero sfadvancements.yml de progresos");
+            sender.sendMessage(ChatColor.RED + "complemento " + pl.getName() + " dejarNo hay ningún perfil de progreso predeterminado en sfadvancements.yml");
             return false;
         }
 
         InputStream groupInputStream = pl.getResource("sfagroups.yml");
         if (groupInputStream == null) {
-            sender.sendMessage(ChatColor.YELLOW + "El plugin " + pl.getName() + " no trae en su jar el fichero sfagroups.yml de grupos de progreso");
-            sender.sendMessage(ChatColor.YELLOW + "Todo lo importado va al grupo por defecto.");
+            sender.sendMessage(ChatColor.YELLOW + "complemento " + pl.getName() + " dejarNo hay ningún archivo de configuración de grupo de progreso predeterminado en sfagroups.yml");
+            sender.sendMessage(ChatColor.YELLOW + "Cualquier progreso importado se colocará en el grupo predeterminado.。");
         }
 
         saveBackups();
         importGroups(pl, groupInputStream);
         importAdvancements(pl, advInputStream);
 
-        sender.sendMessage("Hecho. Reinicia el servidor o usa /sfa reload para que se aplique.");
+        sender.sendMessage("¡Hecho! Reinicie el servidor o use /sfa reload comando para hacer que los cambios surtan efecto。");
         return true;
     }
 
@@ -65,7 +65,7 @@ public class ImportCommand implements SubCommand {
             backupFolder.mkdirs();
         }
         if (!backupFolder.isDirectory()) {
-            throw new IllegalStateException(backupFolder + " no es un directorio válido.");
+            throw new IllegalStateException(backupFolder + " No es un directorio válido。");
         }
 
         File groupFile = new File(dataFolder, "groups.yml");
@@ -89,7 +89,7 @@ public class ImportCommand implements SubCommand {
                 Files.copy(advFile.toPath(), advFileOut.toPath());
             }
         } catch (IOException ex) {
-            SFAdvancements.logger().log(Level.SEVERE, ex, () -> "Error al crear la copia de seguridad");
+            SFAdvancements.logger().log(Level.SEVERE, ex, () -> "Se produjo un error al crear la copia de seguridad.");
         }
     }
 
@@ -106,7 +106,7 @@ public class ImportCommand implements SubCommand {
         Set<String> keys = config.getKeys(false);
         for (String key : keys) {
             if (original.isSet(key)) {
-                SFAdvancements.info("grupo de progreso " + key + " ya existe; no se sobrescribe.");
+                SFAdvancements.info("grupo de progreso " + key + " Ya existe y no se sobrescribirá.。");
             } else {
                 original.set(key, config.get(key));
             }
@@ -114,7 +114,7 @@ public class ImportCommand implements SubCommand {
         try {
             original.save(outfile);
         } catch (IOException ex) {
-            SFAdvancements.logger().log(Level.SEVERE, ex, () -> "No se pudieron guardar los grupos de progreso");
+            SFAdvancements.logger().log(Level.SEVERE, ex, () -> "No se puede guardar el grupo de progreso");
         }
     }
 
@@ -127,7 +127,7 @@ public class ImportCommand implements SubCommand {
         Set<String> keys = config.getKeys(false);
         for (String key : keys) {
             if (original.isSet(key)) {
-                SFAdvancements.info("progreso " + key + " ya existe; no se sobrescribe.");
+                SFAdvancements.info("cronograma " + key + " Ya existe y no se sobrescribirá.。");
             } else {
                 original.set(key, config.get(key));
             }
@@ -135,7 +135,7 @@ public class ImportCommand implements SubCommand {
         try {
             original.save(outfile);
         } catch (IOException ex) {
-            SFAdvancements.logger().log(Level.SEVERE, ex, () -> "No se pudieron guardar los progresos");
+            SFAdvancements.logger().log(Level.SEVERE, ex, () -> "No se puede guardar el progreso");
         }
     }
 

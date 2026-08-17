@@ -18,13 +18,13 @@ public class RevokeCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ChatColor.RED + "Uso: /" + label + " revoke <jugador> <progreso>");
+            sender.sendMessage(ChatColor.RED + "uso: /" + label + " revoke <jugador> <cronograma>");
             return false;
         }
 
         Player p = Bukkit.getPlayer(args[1]);
         if (p == null) {
-            sender.sendMessage(ChatColor.RED + "No se encontró al jugador " + args[1]);
+            sender.sendMessage(ChatColor.RED + "No se puede encontrar el jugador " + args[1]);
             return false;
         }
 
@@ -33,15 +33,15 @@ public class RevokeCommand implements SubCommand {
             for (NamespacedKey adv : progress.getCompletedAdvancements()) {
                 progress.revokeAdvancement(adv);
             }
-            sender.sendMessage("Se han borrado todos los progresos del jugador.");
+            sender.sendMessage("Todo el progreso del jugador borrado.!");
             return true;
         }
 
         if (!progress.revokeAdvancement(NamespacedKey.fromString(args[2]))) {
-            sender.sendMessage(ChatColor.RED + "No se pudo borrar del jugador " + args[1] + " el progreso " + args[2]);
+            sender.sendMessage(ChatColor.RED + "No se puede borrar el jugador " + args[1] + " progreso " + args[2]);
             return false;
         } else {
-            sender.sendMessage("Progreso borrado.");
+            sender.sendMessage("El progreso se ha borrado con éxito.!");
             return true;
         }
     }

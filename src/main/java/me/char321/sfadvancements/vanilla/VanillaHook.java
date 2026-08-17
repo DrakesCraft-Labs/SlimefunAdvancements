@@ -88,7 +88,7 @@ public class VanillaHook {
                     removedAny = true;
                 }
             } catch (Exception e) {
-                SFAdvancements.warn("No se pudo quitar el progreso " + key + ": " + e.getMessage());
+                SFAdvancements.warn("No se puede eliminar el progreso " + key + ": " + e.getMessage());
             }
         }
         if (removedAny && SFAdvancements.getMainConfig().getBoolean("reload-data-on-adv-remove")) {
@@ -166,8 +166,8 @@ public class VanillaHook {
             return;
         }
         SFAdvancements.info("Fondo del grupo de progreso: " + groupId + " -> " + resolvedBackground);
-        SFAdvancements.info("Fondo interpretado: raw=" + rawBackground + ", resolved=" + resolvedBackground);
-        SFAdvancements.info("JSON del grupo de progreso: " + key + " -> " + json);
+        SFAdvancements.info("Análisis de antecedentes: raw=" + rawBackground + ", resolved=" + resolvedBackground);
+        SFAdvancements.info("grupo de progresoJSON: " + key + " -> " + json);
     }
 
     private static String getDescriptionFor(List<String> lore, Advancement adv) {
@@ -196,10 +196,10 @@ public class VanillaHook {
             if (loaded != null) {
                 loadedKeys.add(key);
             } else {
-                SFAdvancements.warn("No se pudo registrar el progreso " + key + ": devolvió un objeto vacío");
+                SFAdvancements.warn("No se puede registrar el progreso " + key + ": Devolver objeto vacío");
             }
         } catch (Exception e) {
-            SFAdvancements.warn("No se pudo registrar el progreso " + key + ": " + e.getMessage());
+            SFAdvancements.warn("No se puede registrar el progreso " + key + ": " + e.getMessage());
         }
     }
 
@@ -207,22 +207,22 @@ public class VanillaHook {
         NamespacedKey key = NamespacedKey.minecraft("story/root");
         org.bukkit.advancement.Advancement adv = Bukkit.getAdvancement(key);
         if (adv == null) {
-            SFAdvancements.warn("No se pudo leer el fondo de progreso vanilla: no se encontró " + key);
+            SFAdvancements.warn("No se puede leer el fondo de progreso original: extraviado " + key);
             return;
         }
         String background = readBackgroundFromAdvancement(adv);
         backgroundStyle = detectBackgroundStyle(background);
-        SFAdvancements.info("Fondo de progreso vanilla: " + key + " -> " + background);
+        SFAdvancements.info("Fondo de progreso original: " + key + " -> " + background);
     }
 
     private void logResolvedBackgroundFromServer(NamespacedKey key) {
         org.bukkit.advancement.Advancement adv = Bukkit.getAdvancement(key);
         if (adv == null) {
-            SFAdvancements.warn("No se pudo leer el fondo de progreso registrado: no se encontró " + key);
+            SFAdvancements.warn("No se puede leer el fondo del progreso del registro: extraviado " + key);
             return;
         }
         String background = readBackgroundFromAdvancement(adv);
-        SFAdvancements.info("Fondo de progreso registrado (servidor): " + key + " -> " + background);
+        SFAdvancements.info("Antecedentes del progreso del registro(Servidor): " + key + " -> " + background);
     }
 
     @Nullable
@@ -559,7 +559,7 @@ public class VanillaHook {
         if (!SFAdvancements.getMainConfig().getBoolean("debug")) {
             return;
         }
-        SFAdvancements.warn("Diagnóstico (" + context + "): " + e.getClass().getSimpleName() + ": " + e.getMessage());
+        SFAdvancements.warn("información de depuración(" + context + "): " + e.getClass().getSimpleName() + ": " + e.getMessage());
     }
 
     private static void addSkullProfile(JsonObject components, ItemMeta meta) {
@@ -676,7 +676,7 @@ public class VanillaHook {
     public void complete(Player p, NamespacedKey key) {
         org.bukkit.advancement.Advancement advancement = Bukkit.getAdvancement(key);
         if (advancement == null) {
-            SFAdvancements.warn("Se intentó completar un logro no registrado " + key);
+            SFAdvancements.warn("Intenta completar un logro no registrado " + key);
             return;
         }
         Utils.runSync(() -> {
@@ -690,7 +690,7 @@ public class VanillaHook {
     public void revoke(Player p, NamespacedKey key) {
         org.bukkit.advancement.Advancement advancement = Bukkit.getAdvancement(key);
         if (advancement == null) {
-            SFAdvancements.warn("Se intentó retirar un logro no registrado " + key);
+            SFAdvancements.warn("Intenta revocar logros no registrados " + key);
             return;
         }
         Utils.runSync(() -> {

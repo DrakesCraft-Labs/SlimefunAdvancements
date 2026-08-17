@@ -8,34 +8,34 @@ basic:
 electric:
   display:
     type: REDSTONE
-    name: "&eElectricidad"
+    name: "&eelectricidad"
     lore:
-      - "&7&oEl corazón de la civilización industrial."
+      - "&7&ocentro de la civilización"
 
 cargo:
   display:
     type: CARGO_MANAGER
-    name: "&6Transporte"
+    name: "&6transporte"
     lore:
-      - "&7&oUn pequeño paso hacia la automatización."
+      - "&7&oUn pequeño paso para el asombro"
 
 technical:
   display:
     type: DIAMOND_PICKAXE
-    name: "&4Ciencia y tecnología"
+    name: "&4ciencia y tecnologia"
     lore:
-      - "&7&oEnciende el motor y lleva la tecnología más lejos."
+      - "&7&oGira el motor y despega.!"
 
 magical:
   display:
     type: ENDER_EYE
-    name: "&dMagia"
+    name: "&dmagia"
     lore:
-      - "&7&oLa ciencia suficientemente avanzada parece magia."
+      - "&7&oLa magia es producto del tiempo."
 
 other:
   display:
     type: LAVA_BUCKET
-    name: "&7Otros"
+    name: "&7otro"
     lore:
       - "&7&oOtros avances"

@@ -18,13 +18,13 @@ public class GrantCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 3) {
-            sender.sendMessage(ChatColor.RED + "Uso: /" + label + " grant <jugador> <progreso>");
+            sender.sendMessage(ChatColor.RED + "uso: /" + label + " grant <jugador> <cronograma>");
             return false;
         }
 
         Player p = Bukkit.getPlayer(args[1]);
         if (p == null) {
-            sender.sendMessage(ChatColor.RED + "No se encontró al jugador " + args[1]);
+            sender.sendMessage(ChatColor.RED + "No se puede encontrar el jugador " + args[1]);
             return false;
         }
 
@@ -32,18 +32,18 @@ public class GrantCommand implements SubCommand {
             for (Advancement adv : SFAdvancements.getRegistry().getAdvancements().values()) {
                 adv.complete(p);
             }
-            sender.sendMessage("Se le han desbloqueado todos los progresos al jugador.");
+            sender.sendMessage("Todo el progreso ha sido desbloqueado para el jugador.！");
             return true;
         }
 
         Advancement adv = SFAdvancements.getRegistry().getAdvancement(NamespacedKey.fromString(args[2]));
         if (adv == null) {
-            sender.sendMessage(ChatColor.RED + "No se encontró el progreso " + args[2]);
+            sender.sendMessage(ChatColor.RED + "No se puede encontrar el progreso " + args[2]);
             return false;
         }
 
         adv.complete(p);
-        sender.sendMessage("Al jugador " + p.getName() + " desbloquea el progreso " + adv.getKey());
+        sender.sendMessage("ya un jugador " + p.getName() + " Desbloquear progreso " + adv.getKey());
         return true;
     }
 

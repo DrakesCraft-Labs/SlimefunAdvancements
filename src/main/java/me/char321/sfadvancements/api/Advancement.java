@@ -159,7 +159,7 @@ public class Advancement {
 
     private void broadcastMessage(Player p) {
         BaseComponent component = new TextComponent();
-        component.addExtra(p.getName() + "ha conseguido el progreso");
+        component.addExtra(p.getName() + "progreso realizado");
         BaseComponent sub = new TextComponent(getName());
         sub.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(getDescription())));
         component.addExtra(sub);

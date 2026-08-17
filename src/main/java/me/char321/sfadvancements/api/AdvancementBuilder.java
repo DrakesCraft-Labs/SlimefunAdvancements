@@ -34,7 +34,7 @@ public class AdvancementBuilder {
         String groupName = config.getString("group");
         AdvancementGroup group = getGroup(groupName);
         if (group == null) {
-            SFAdvancements.warn(key + "el grupo del progreso " + groupName + " no existe.");
+            SFAdvancements.warn(key + "grupo de progreso " + groupName + " no existe!");
             return null;
         }
         builder.group(group);
@@ -48,7 +48,7 @@ public class AdvancementBuilder {
 
         ItemStack display = ConfigUtils.getItem(config, "display");
         if (display == null) {
-            SFAdvancements.warn("progreso " + key + " tiene un objeto de muestra no válido");
+            SFAdvancements.warn("cronograma " + key + " Los elementos mostrados no son válidos.");
             return null;
         }
         builder.display(display);
@@ -85,7 +85,7 @@ public class AdvancementBuilder {
 
         ConfigurationSection cripath = config.getConfigurationSection("criteria");
         if (cripath == null) {
-            SFAdvancements.warn("progreso " + key + " tiene que indicar una condición para completarse");
+            SFAdvancements.warn("cronograma " + key + " Se deben especificar las condiciones de finalización.");
             return null;
         }
         List<Criterion> criteria = new ArrayList<>();

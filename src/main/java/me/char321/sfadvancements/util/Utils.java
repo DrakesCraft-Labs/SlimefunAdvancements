@@ -11,6 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import net.guizhanss.guizhanlib.minecraft.utils.compatibility.EnchantmentX;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -24,13 +25,15 @@ public class Utils {
         item = item.clone();
         ItemMeta im = item.getItemMeta();
         //noinspection DataFlowIssue
-        im.setEnchantmentGlintOverride(true);
+        im.addEnchant(EnchantmentX.UNBREAKING, 1, false);
+        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(im);
         return item;
     }
 
     public static void makeShiny(ItemMeta im) {
-        im.setEnchantmentGlintOverride(true);
+        im.addEnchant(EnchantmentX.UNBREAKING, 1, false);
+        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
     }
 
     public static boolean keyIsSFA(NamespacedKey key) {

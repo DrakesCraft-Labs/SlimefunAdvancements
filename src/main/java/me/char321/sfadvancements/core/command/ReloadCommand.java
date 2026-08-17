@@ -16,13 +16,13 @@ import java.util.logging.Level;
 public class ReloadCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
-        SFAdvancements.info("Recargando la configuración...");
-        sender.sendMessage(ChatColor.YELLOW + "Recargar la configuración es experimental. Si algo falla, reinicia el servidor.");
+        SFAdvancements.info("Recargando configuración...");
+        sender.sendMessage(ChatColor.YELLOW + "La configuración de sobrecarga es una característica experimental. Si encuentra algún problema, reinicie el servidor.。");
         try {
             SFAdvancements.getAdvManager().save();
         } catch (IOException e) {
-            sender.sendMessage(ChatColor.RED + "Error al guardar los progresos; mira la consola. Se ha cancelado la recarga.");
-            SFAdvancements.logger().log(Level.SEVERE, e, () -> "Error al guardar los progresos durante la recarga");
+            sender.sendMessage(ChatColor.RED + "Se produjo un error al guardar el progreso; consulte la consola para obtener más información. Recarga cancelada。");
+            SFAdvancements.logger().log(Level.SEVERE, e, () -> "Error al recargar guardar progreso");
             return false;
         }
 
@@ -34,7 +34,7 @@ public class ReloadCommand implements SubCommand {
 
         SFAdvancements.instance().reload();
 
-        sender.sendMessage("Configuración recargada.");
+        sender.sendMessage("Configuración recargada exitosamente！");
         return true;
     }
 

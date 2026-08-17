@@ -22,22 +22,22 @@ public class DumpItemCommand implements SubCommand {
     @Override
     public boolean onExecute(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)) {
-            sender.sendMessage("Este comando solo lo puede usar un jugador");
+            sender.sendMessage("Sólo los jugadores pueden ejecutar este comando.");
             return false;
         }
 
         Player p = (Player) sender;
 
-        sender.sendMessage("Generando la configuración serializada...");
+        sender.sendMessage("Generando configuración de serialización...");
         ItemStack item = p.getInventory().getItemInMainHand();
         if (item == null || item.getType().isAir()) {
-            sender.sendMessage(ChatColor.RED + "Tienes que llevar un objeto en la mano para usar este comando.");
+            sender.sendMessage(ChatColor.RED + "Por favor sostenga un objeto antes de ejecutar este comando。");
             return true;
         }
-        SFAdvancements.info("Configuración serializada del objeto: " + item);
+        SFAdvancements.info("Configuración de serialización de artículos: " + item);
 
         if (!item.hasItemMeta()) {
-            SFAdvancements.info("Este objeto se puede indicar con este ID: \n" + item.getType().name());
+            SFAdvancements.info("Este artículo puede utilizar directamente elIDexpresar: \n" + item.getType().name());
         }
 
         ItemMeta im = item.getItemMeta();
@@ -49,7 +49,7 @@ public class DumpItemCommand implements SubCommand {
             if (itemData.isPresent()) {
                 String id = itemData.get();
                 if (SlimefunUtils.isItemSimilar(item, SlimefunItem.getById(id).getItem(), true)) {
-                    SFAdvancements.info("Este objeto se puede indicar con este ID: \n" + id);
+                    SFAdvancements.info("Este artículo puede utilizar directamente elIDexpresar: \n" + id);
                 }
                 type = id;
             }
@@ -68,9 +68,9 @@ public class DumpItemCommand implements SubCommand {
 
         YamlConfiguration configuration = new YamlConfiguration();
         configuration.set("item", item);
-        SFAdvancements.info("Configuración serializada del objeto: \n" + configuration.saveToString());
+        SFAdvancements.info("Configuración serializada de artículos.: \n" + configuration.saveToString());
 
-        sender.sendMessage("Hecho. Mira la consola.");
+        sender.sendMessage("¡Hecho! Por favor revisa la consola。");
         return true;
     }
 

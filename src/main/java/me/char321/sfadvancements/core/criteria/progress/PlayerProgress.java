@@ -56,7 +56,7 @@ public class PlayerProgress {
                 JsonObject object = JsonParser.parseReader(new BufferedReader(new InputStreamReader(new FileInputStream(f), StandardCharsets.UTF_8))).getAsJsonObject();
                 res.loadFromObject(object);
             } catch (IOException e) {
-                SFAdvancements.logger().log(Level.SEVERE, "Error al leer los progresos", e);
+                SFAdvancements.logger().log(Level.SEVERE, "Se produjo un error al leer el progreso.", e);
             }
         }
         return res;
@@ -162,7 +162,7 @@ public class PlayerProgress {
         if (!f.exists()) {
             f.getParentFile().mkdirs();
             if (!f.createNewFile()) {
-                throw new IOException("No se pudo crear el fichero " + f.getPath());
+                throw new IOException("No se puede crear el archivo " + f.getPath());
             }
         }
 

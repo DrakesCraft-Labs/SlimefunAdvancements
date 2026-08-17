@@ -16,6 +16,9 @@ import me.char321.sfadvancements.core.tasks.AutoSaveTask;
 import me.char321.sfadvancements.util.ConfigUtils;
 import me.char321.sfadvancements.util.Utils;
 import me.char321.sfadvancements.vanilla.VanillaHook;
+import net.guizhanss.minecraft.guizhanlib.updater.GuizhanUpdater;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
@@ -50,9 +53,18 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
 
+        if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
+            getLogger().log(Level.SEVERE, "Este complemento requiere el complemento previo a la biblioteca de Ghost Slayer(GuizhanLibPlugin) correr!");
+            getLogger().log(Level.SEVERE, "Descargar desde aquí: https://50l.cc/gzlib");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         config = new Config(this);
 
         detectCapabilities();
+
+        autoUpdate();
 
         getCommand("sfadvancements").setExecutor(new SFACommand(this));
 
@@ -66,16 +78,19 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
         DefaultCompleters.registerDefaultCompleters();
         CriteriaTypes.loadDefaultCriteria();
 
-        info("Arrancando el guardado automático...");
+        info("Iniciar una tarea de guardado automático...");
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, new AutoSaveTask(), 6000L, 6000L);
 
+        Metrics metrics = new Metrics(this, 14130);
+        metrics.addCustomChart(new SimplePie("AdvancementAPI enabled",
+                () -> config.getBoolean("use-advancements-api") ? "true" : "false"));
 
         // allow other plugins to register their criteria completers
-        info("Esperando a que arranque el servidor...");
+        info("Esperando a que se inicie el servidor...");
         Utils.runLater(() -> {
-            info("Cargando grupos de progreso desde la configuración...");
+            info("Cargando grupo de progreso desde el archivo de configuración...");
             loadGroups();
-            info("Cargando progresos desde la configuración...");
+            info("Cargando progreso desde el archivo de configuración...");
             loadAdvancements();
 
             if (config.getBoolean("use-advancements-api")) {
@@ -91,7 +106,7 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
         try {
             advManager.save();
         } catch (IOException e) {
-            getLogger().log(Level.SEVERE, e, () -> "No se pudieron guardar los progresos");
+            getLogger().log(Level.SEVERE, e, () -> "No se puede guardar el progreso");
         }
     }
 
@@ -104,6 +119,12 @@ public final class SFAdvancements extends JavaPlugin implements SlimefunAddon {
         }
     }
 
+    private void autoUpdate() {
+        if (config.getBoolean("auto-update") && getDescription().getVersion().startsWith("Build")) {
+            info("Buscando actualizaciones...");
+            GuizhanUpdater.start(this, this.getFile(), "SlimefunGuguProject", "SlimefunAdvancements", "main");
+        }
+    }
 
     public void reload() {
         config.reload();

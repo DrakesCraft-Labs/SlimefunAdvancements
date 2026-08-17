@@ -11,7 +11,7 @@ public class AutoSaveTask implements Runnable {
         try {
             SFAdvancements.getAdvManager().save();
         } catch (IOException e) {
-            SFAdvancements.logger().log(Level.SEVERE, e, () -> "No se pudieron guardar los progresos.");
+            SFAdvancements.logger().log(Level.SEVERE, e, () -> "No se puede guardar el progreso!");
         }
     }
 }
